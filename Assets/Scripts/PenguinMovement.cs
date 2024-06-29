@@ -44,7 +44,7 @@ public class PenguinMovement : MonoBehaviour
 
     public void AgregarSaco()
     {
-        if (!_isAlive) return;
+        if (!_isAlive || GameManager.Instance.GameEnd) return;
 
         ++_sacosCount;
         _spriteRenderer.sprite = _penguinSacos[_sacosCount];

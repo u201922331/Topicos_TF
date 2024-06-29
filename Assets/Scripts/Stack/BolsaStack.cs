@@ -41,7 +41,7 @@ public class BolsaStack : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetMouseButtonDown(0) && _inArea && PenguinMovement.instance.CanLeaveSacos)
+        if(Input.GetMouseButtonDown(0) && _inArea && PenguinMovement.instance.CanLeaveSacos && !GameManager.Instance.GameEnd)
         {
             for (int i = 0; i < PenguinMovement.instance._sacosCount; i++)AddBag();
             PenguinMovement.instance.ResetearSacos();
