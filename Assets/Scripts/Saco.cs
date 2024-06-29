@@ -23,7 +23,7 @@ public class Saco : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-
+            Destroy(gameObject);
             return;
         }
 
