@@ -1780,7 +1780,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerType: 0
-  startTime: 60
+  startTime: 30
 --- !u!114 &1753763512
 MonoBehaviour:
   m_ObjectHideFlags: 0

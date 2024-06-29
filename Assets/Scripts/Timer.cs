@@ -41,10 +41,14 @@ public class Timer : MonoBehaviour
         if(timerType == TimerType.Countdown && timeToDisplay < 0.0f) return;
         timeToDisplay += timerType == TimerType.Countdown ? -Time.deltaTime : Time.deltaTime;
 
-        if (timeToDisplay <= 0) GameManager.Instance.EndGame();
-
         TimeSpan timeSpan = TimeSpan.FromSeconds(timeToDisplay);
         _timertext.text = timeSpan.ToString(format:@"mm\:ss\:ff");
+
+        if (timeToDisplay <= 0)
+        {
+            GameManager.Instance.EndGame();
+            _timertext.text = "00:00:00";
+        }
 
     }
 }

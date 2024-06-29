@@ -36,6 +36,7 @@ public class BolsaStack : MonoBehaviour
         GameObject Bolsa = Instantiate(bolsa, new Vector3(this.transform.position.x, this.transform.position.y + bolsaSpacing * stack.Count, this.transform.position.z), Quaternion.identity);
         stack.Add(Bolsa);
         GameManager.Instance.AddScore(3);
+        mouseAviso.SetActive(false);
     }
 
     private void Update()
