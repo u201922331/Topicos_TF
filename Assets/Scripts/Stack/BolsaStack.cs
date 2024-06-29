@@ -7,6 +7,8 @@ public class BolsaStack : MonoBehaviour
 {
     [SerializeField]
     private GameObject bolsa;
+    [SerializeField]
+    private PenguinMovement pinguino;
     private int nBolsas;
     private float bolsaSpacing;
 
@@ -19,8 +21,18 @@ public class BolsaStack : MonoBehaviour
         if (nBolsas < 20) {
             Instantiate(bolsa, new Vector3(this.transform.position.x, this.transform.position.y + bolsaSpacing * nBolsas, this.transform.position.z), Quaternion.identity);
             nBolsas += 1;
-            Debug.Log("¡Nueva bolsa!");
+            // Debug.Log("¡Nueva bolsa!");
         }
         Debug.Log("N° de bolsas: " + nBolsas);
+    }
+
+    void OnTriggerEnter2D(Collider2D collision) {
+        if (collision.gameObject.CompareTag("Player")) {
+            Debug.Log("Jugador detectado...");
+            for (int i = 0; i < pinguino._sacosCount; i++)
+                AddBag();
+            pinguino.ResetearSacos();
+        }
+        Debug.Log("¿?");
     }
 }

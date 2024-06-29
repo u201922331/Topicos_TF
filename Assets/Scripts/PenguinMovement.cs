@@ -8,7 +8,7 @@ public class PenguinMovement : MonoBehaviour
     [SerializeField] List<Sprite> _penguinSacos;
     [SerializeField] Sprite _pinguinoMuerto;
     SpriteRenderer _spriteRenderer;
-    int _sacosCount = 0;
+    public int _sacosCount = 0;
     bool _isAlive = true;
     void Awake(){
         if(instance == null){
