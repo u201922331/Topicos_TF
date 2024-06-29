@@ -7,8 +7,6 @@ public class BolsaStack : MonoBehaviour
 {
     [SerializeField]
     private GameObject bolsa;
-    [SerializeField]
-    private PenguinMovement pinguino;
     private int nBolsas;
     private float bolsaSpacing;
 
@@ -29,6 +27,7 @@ public class BolsaStack : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision) {
         if (collision.gameObject.CompareTag("Player")) {
             Debug.Log("Jugador detectado...");
+            PenguinMovement pinguino = collision.GetComponent<PenguinMovement>();
             for (int i = 0; i < pinguino._sacosCount; i++)
                 AddBag();
             pinguino.ResetearSacos();
