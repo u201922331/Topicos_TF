@@ -12,7 +12,7 @@ public class BolsaStack : MonoBehaviour
 
     void Awake() {
         nBolsas = 0;
-        bolsaSpacing = 0.5f;
+        bolsaSpacing = 0.25f;
     }
 
     public void AddBag() {

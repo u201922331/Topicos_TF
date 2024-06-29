@@ -320,6 +320,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8607524353006493097, guid: feaa01f42b2c20f46a6f3b9924957695, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 8607524353006493097, guid: feaa01f42b2c20f46a6f3b9924957695, type: 3}
       propertyPath: m_Name
       value: Stack
       objectReference: {fileID: 0}
