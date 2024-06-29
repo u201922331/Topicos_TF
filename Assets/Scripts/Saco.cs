@@ -23,7 +23,7 @@ public class Saco : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            if(_doDamage) PenguinMovement.instance.MatarPinguino();
+            if(_doDamage) PenguinMovement.instance.YunquePinguino();
             else  PenguinMovement.instance.AgregarSaco();
             Destroy(gameObject);
             return;

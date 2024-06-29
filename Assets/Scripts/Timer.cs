@@ -7,7 +7,8 @@ public class Timer : MonoBehaviour
     private TMP_Text _timertext;
     enum TimerType {Countdown, Stopwatch}
     [SerializeField] private TimerType timerType;
-    [SerializeField] private float timeToDisplay = 60.0f;
+    [SerializeField] private float startTime = 60.0f;
+    float timeToDisplay;
 
     private bool _isRunning;
     
@@ -18,17 +19,21 @@ public class Timer : MonoBehaviour
     private void OnEnable(){
         EventManager.TimerStart += EventManagerOnTimeStart;
         EventManager.TimerStop += EventManagerOnTimeStop;
-        EventManager.TimerUpdate += EventManagerOnTimeUpdate;
     }
     private void OnDisable(){
         EventManager.TimerStart -= EventManagerOnTimeStart;
         EventManager.TimerStop -= EventManagerOnTimeStop;
-        EventManager.TimerUpdate -= EventManagerOnTimeUpdate;
     }
-    private void EventManagerOnTimeStop() => _isRunning = false;
+    private void EventManagerOnTimeStop()
+    {
+        _isRunning = false;
+    }
 
-    private void EventManagerOnTimeStart() => _isRunning = true;
-    private void EventManagerOnTimeUpdate(float value) => timeToDisplay += value;
+    private void EventManagerOnTimeStart()
+    {
+        timeToDisplay = startTime;
+        _isRunning = true;
+    }
 
     private void Update()
     {
@@ -36,7 +41,10 @@ public class Timer : MonoBehaviour
         if(timerType == TimerType.Countdown && timeToDisplay < 0.0f) return;
         timeToDisplay += timerType == TimerType.Countdown ? -Time.deltaTime : Time.deltaTime;
 
+        if (timeToDisplay <= 0) GameManager.Instance.EndGame();
+
         TimeSpan timeSpan = TimeSpan.FromSeconds(timeToDisplay);
         _timertext.text = timeSpan.ToString(format:@"mm\:ss\:ff");
+
     }
 }

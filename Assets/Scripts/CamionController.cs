@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class CamionController : MonoBehaviour
 {
+    public static CamionController Instance { get; private set; }
     [SerializeField] private Saco _saco;
     [SerializeField] private Transform _startPosition;
     [SerializeField] private float _minDropForce;
@@ -12,6 +13,16 @@ public class CamionController : MonoBehaviour
     [SerializeField] private List<SacoSO> _sacosSO;
     float _currentTime = 0;
     [SerializeField] bool _canDrop = false;
+
+    private void Awake()
+    {
+        if (Instance)
+        {
+            Destroy(this);
+            return;
+        }
+        Instance = this;
+    }
 
     public void ActiveDrop(bool active)
     {
